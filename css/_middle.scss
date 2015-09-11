@@ -1,0 +1,142 @@
+div#main {
+	article.project-container {
+		width: 100%;
+		float: left;
+		background: $white;
+		padding: 40px 0;
+		border-bottom: 2px solid $dkgrey;
+		min-height: 400px;
+		&:last-of-type {
+			border-bottom: none;
+		}
+		@media #{$medium} {
+			padding: 65px 0;
+			
+		}
+		.project-image {
+			@include column(12);
+			position: relative;
+			&.animate {
+			
+				opacity: 0;
+				@media #{$large} {
+					bottom: -400px;
+				}
+			}
+			img {
+				width: 100%;
+				height: auto;
+				max-width: 100%;
+			}
+			@media #{$medium} {
+				@include column(6);
+				padding-right: 15px;
+			}
+		}
+		.project-content {
+			@include column(12);
+			position: relative;
+			&.animate {
+				
+				opacity: 0;
+				@media #{$large} {
+					right: -400px;
+				}
+			}
+			@media #{$medium} {
+				@include column(6);
+				padding-left: 15px;
+			}
+
+			@media #{$small} {
+				text-align: center;
+			}
+
+			h3.project-title {
+				margin-top: 8px;
+				margin-bottom: 20px;
+				@media #{$medium} {
+					margin-top: 0px;
+				}
+			}
+
+			.project-tags {
+				width: 100%;
+				float: left;
+				margin-bottom: 15px;
+				ul {
+					li {
+						display: inline-block;
+						border: 1px solid $xdkgrey;
+						padding: 3px 6px;
+						margin-left: 5px;
+						border-radius: 4px;
+						margin-bottom: 5px;
+						@media #{$large} {
+							border: 1px solid $ltgrey;
+						}
+						&:first-of-type {
+							margin-left: 0px;
+						}
+						&:hover {
+							border: 1px solid $xdkgrey;
+						}
+					}
+				}
+			}
+
+			.project-description {
+				width: 100%;
+				float: left;
+				margin-bottom: 25px;
+			}
+
+			a.website-link {
+				display: inline-block;
+				
+				border: 1px solid $black;
+				padding: 12px 20px;
+				border-radius: 6px;
+				position: relative;
+				overflow: hidden;
+				span {
+					position: relative;
+					z-index: 1;
+					transition: all 0.4s ease-in-out;
+				}
+				&:before {
+					content:"";
+
+					position: absolute;
+					left: 0;
+					bottom: 0;
+					width: 0px;
+					height: 100%;
+					transition: all 0.5s ease-in-out;
+				}
+				&:hover {
+					
+					&:before {
+						width: 100%;
+					}	
+				}
+			}
+		}
+	}
+
+
+	article.project-container {
+		a.website-link {
+			&:before {
+				background: $cyan;
+			}
+			&:hover {
+				border: 1px solid $cyan;
+
+			}
+		}
+	}
+
+
+
+}

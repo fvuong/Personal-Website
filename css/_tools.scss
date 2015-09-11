@@ -1,0 +1,5 @@
+@mixin column($column) {
+	margin: 0 1%;
+	width: ((100%)*($column/12))-2%;
+	float: left;
+}
