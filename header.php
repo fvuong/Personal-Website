@@ -32,7 +32,7 @@
 
 <body <?php body_class(); ?>>
 
-
+	<!-- VIDEO -->
 	<video class="video-bg" autoplay loop>
 		<source src="<?php echo get_template_directory_uri(); ?>/video/background.mp4"></source>
 	</video>
@@ -40,23 +40,22 @@
 	<section class="intro-content">
 		<div class="header-logo">
 			<a href="<?php echo get_home_url(); ?>"><h1><?php echo __("Frank Vuong", "frankvuong"); ?></h1></a>
-			<h3 class="sub-title"><?php echo __("Aspiring Web Developer","frankvuong"); ?></h3>
-
-			
+			<h3 class="sub-title"><?php echo __("Aspiring Web Developer","frankvuong"); ?></h3>			
 		</div>
 	</section>
 
 	<section id="container">
 		<header id="header">
 			<div class="wrapper">
-				<h2 class="projects-title"><?php echo __("Projects"); ?></h2>
+				<h2 class="projects-title"><?php echo __("Projects"); ?><a id="nav-toggle" href="javascript:void(0);"><span></span></a></h2>
+				
+				<!-- QUERY PROJECT POSTS -->
 				<?php 
 				query_posts(array(
 					'post_type' =>'post',
 					'order' => 'ASC',
 					));
 					?>
-
 					<ul class="project-links">
 
 						<?php if ( have_posts() ) :

@@ -2,7 +2,15 @@
 jQuery(document).ready(function(){
 	videoHeight();
 
-	jQuery(".project-links li:last-of-type").addClass("active");	
+// Add Active to Last Class
+jQuery(".project-links li:last-of-type").addClass("active");	
+
+// Projects Title Click, Open Menu 
+jQuery("h2.projects-title").click(function() {
+	jQuery("ul.project-links").toggleClass("open");
+	jQuery(this).toggleClass("open");
+	jQuery(this).children("#nav-toggle").toggleClass("active");
+});
 
 });
 
@@ -12,40 +20,44 @@ jQuery(window).on('resize', function() {
 })
 
 
+// Project Click
 jQuery(".project-links li a").click(function() {
 	var postId = jQuery(this).attr("data-id");
 	var postUrl = window.location.href + "?p=" + postId;
 	jQuery(".project-links li").removeClass("active");
 	jQuery(this).parent().addClass("active");
+	
+// Check Media Query
+var mq = window.matchMedia( "(min-width: 769px)" );
 
-	var mq = window.matchMedia( "(min-width: 960px)" );
+	// Ajax for new project 
 	jQuery.ajax({
 		url: postUrl,
 		success: function(data) {
 			jQuery(".project-container").empty();
 			jQuery(".project-container").append(data);
 			
+
+
 			if (mq.matches) {
-				jQuery(".project-content").animate({
-					right: "+=400",
-					opacity: 1,
-				}, 800);
-				jQuery(".project-image").animate({
-					bottom: "+=400",
-					opacity: 1,
-				}, 800);
-				
-			} else {
-				jQuery(".project-content").animate({
-					
-					opacity: 1,
-				}, 800);
-				jQuery(".project-image").animate({
-				
-					opacity: 1,
-				}, 800);
+				jQuery("html,body").animate({
+					scrollTop: jQuery(".projects-title").offset().top}, '400');
 			}
-			
+			else {
+				jQuery("html,body").animate({
+					scrollTop: jQuery(".project-container").offset().top}, '400');
+			};
+
+			jQuery(".project-content").animate({
+
+				opacity: 1,
+			}, 800);
+			jQuery(".project-image").animate({
+
+				opacity: 1,
+			}, 800);
+
+
 
 		},
 
@@ -54,6 +66,7 @@ jQuery(".project-links li a").click(function() {
 })
 
 
+// Top Margin based on screen height
 function videoHeight() {
 	var windowHeight = jQuery(".video-bg").height();
 	jQuery("section#container").css("margin-top", windowHeight);

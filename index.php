@@ -6,7 +6,7 @@
 
 
 
-
+	<!-- PROJECT -->
 	<article class="project-container">
 
 		<div class="wrapper">
@@ -44,7 +44,8 @@
 
 
 		</div>
-	</article>
+	</article> 
+	<!-- END IF PROJECT CONTAINTER -->
 
 
 
